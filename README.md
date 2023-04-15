@@ -6,6 +6,9 @@
 
 Either clone it and run it with cargo or install it with cargo install:
 
+```
+cargo install ekt
+```
 
 ## Usage
 
