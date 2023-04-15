@@ -6,7 +6,7 @@ pub fn print_help_message() {
 	println!("| |___| |\\  \\ | |  ");
 	println!("\\____/\\_| \\_/ \\_/  ");
 	println!("");
-	println!("ekt - Ethereum key toolkit");
+	println!("ekt - Ethereum key tool");
 	println!("Usage:");
 	println!("-h\t Display help message");
 	println!("-r *key amount*\t Generate a specific amount of random keys, default 1");

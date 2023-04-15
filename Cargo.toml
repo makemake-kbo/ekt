@@ -2,8 +2,14 @@
 name = "ekt"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["makemake <vukasin@gostovic.me>"]
+license = "GPL-3.0-or-later"
+description = "Lightweight tool to generate ethereum keys and addresses."
+readme = "README.md"
+homepage = "https://github.com/makemake-kbo/ekt"
+repository = "https://github.com/makemake-kbo/ekt"
+keywords = ["cli", "ethereum", "foundry", "key", "cryptography"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 ethers = { version = "2.0.0", features = ["rustls"] }
