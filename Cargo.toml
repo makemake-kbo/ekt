@@ -8,7 +8,7 @@ description = "Lightweight tool to generate ethereum keys and addresses."
 readme = "README.md"
 homepage = "https://github.com/makemake-kbo/ekt"
 repository = "https://github.com/makemake-kbo/ekt"
-keywords = ["cli", "ethereum", "foundry", "key", "cryptography", "openssl", "ethers"]
+keywords = ["cli", "ethereum", "foundry", "openssl", "ethers"]
 categories = ["command-line-utilities"]
 
 [dependencies]
