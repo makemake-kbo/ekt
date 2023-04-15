@@ -1,11 +1,20 @@
 mod private_key;
 mod errors;
+mod vanity;
 
 use crate::private_key::get_address_from_private_key;
 use crate::errors::print_help_message;
-use std::env;
+use crate::vanity::generate_vanity;
 
-fn main() {
+use std::env;
+use tokio::sync::mpsc;
+use tokio::task;
+
+// Do not question the lack of match usage for the args
+// I am lazy and Go gave me brainrot
+
+#[tokio::main]
+async fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() == 1 || args[1] == "-h" {
@@ -38,9 +47,29 @@ fn main() {
                 _ =>  println!("Invalid private key length at index {}", index),
             }
         }
-    } else if (args[1] == "-v") {
-        println!("a");
+    } else if args[1] == "-v" {
+        let num_threads: usize = args[2].parse().unwrap();
+        let (tx, mut rx) = mpsc::channel::<String>(num_threads);
 
+        println!("Starting threads...");
+
+        // Spawn threads to brute force private keys
+        for num in 0..num_threads {
+            let tx = tx.clone();
+            let start = args[3].clone();
+            task::spawn(async move {
+                let private_key = generate_vanity(start).await;
+                tx.send(private_key).await.unwrap();
+            });
+            println!("Thread {} spawned, working...", num);
+        }
+
+        // Wait for the first thread to complete and print the result
+        if let Some(private_key) = rx.recv().await {
+            println!("sk {}", private_key);
+            println!("pk {:?}\n", get_address_from_private_key(&private_key));
+            std::process::exit(0);
+        }
     } else {
         print_help_message();
         return;

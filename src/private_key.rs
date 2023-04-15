@@ -7,7 +7,7 @@ use ethers::types::Address;
 use hex::encode;
 
 // Generates 64 random bytes with openssl
-fn random_bytes() -> String {
+pub fn random_bytes() -> String {
 	let mut bytes = [0u8; 32];
 	rand_bytes(&mut bytes).unwrap();
 	

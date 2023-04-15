@@ -700,6 +700,7 @@ dependencies = [
  "ethers",
  "hex",
  "openssl",
+ "tokio",
 ]
 
 [[package]]

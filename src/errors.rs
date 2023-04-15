@@ -1,4 +1,11 @@
 pub fn print_help_message() {
+	println!(" _____ _   _______ ");
+	println!("|  ___| | / /_   _|");
+	println!("| |__ | |/ /  | |  ");
+	println!("|  __||    \\  | |  ");
+	println!("| |___| |\\  \\ | |  ");
+	println!("\\____/\\_| \\_/ \\_/  ");
+	println!("");
 	println!("ekt - Ethereum key toolkit");
 	println!("Usage:");
 	println!("-h\t Display help message");
