@@ -12,4 +12,7 @@ pub fn print_help_message() {
 	println!("-r *key amount*\t Generate a specific amount of random keys, default 1");
 	println!("-t *key*\t Validate a private key, and get public key");
 	println!("-v *thread count* *beginning*\t Generate vanity address");
+	println!("\t Example:");
+	println!("\t ekt -v 8 dead");
+	println!("\t - Generates an address starting with dead using 8 threads");
 }

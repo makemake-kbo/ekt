@@ -1,9 +1,7 @@
 use openssl::rand::rand_bytes;
 use std::str::FromStr;
-#[allow(unused_imports)]
 use ethers::prelude::*;
 use ethers::types::Address;
-
 use hex::encode;
 
 // Generates 64 random bytes with openssl

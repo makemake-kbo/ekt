@@ -53,7 +53,7 @@ async fn main() {
 
         println!("Starting threads...");
 
-        // Spawn threads to brute force private keys
+        // Spawn threads
         for num in 0..num_threads {
             let tx = tx.clone();
             let start = args[3].clone();
