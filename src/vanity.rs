@@ -14,8 +14,6 @@ pub async fn generate_vanity(start: String) -> String {
 		combined = format!("{}{}", "0x", start);
 	}
 
-
-
 	// While addr does not begin with start generate new key
 	while !wallet.address().to_string().starts_with(&combined) {
 		sk = random_bytes();
