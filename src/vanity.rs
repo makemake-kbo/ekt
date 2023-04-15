@@ -4,8 +4,8 @@ use std::str::FromStr;
 use ethers::prelude::*;
 
 pub async fn generate_vanity(start: String) -> String {
-	let mut wallet = Wallet::from_str(&random_bytes()).unwrap();
 	let mut sk = random_bytes();
+	let mut wallet = Wallet::from_str(&sk).unwrap();
 	let mut combined = start.clone();
 
 	// Check if start comes with 0x prefix
