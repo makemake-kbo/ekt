@@ -8,9 +8,6 @@ use crate::vanity::spawn_vanity_threads;
 
 use std::env;
 
-// Do not question the lack of match usage for the args
-// I am lazy and Go gave me brainrot
-
 #[tokio::main]
 async fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,6 +17,7 @@ async fn main() {
         print_help_message();
         return;
     }
+    
     match args[1].as_str() {
         "-h" => print_help_message(),
         "-r" => parse_arg_and_generate(args),
