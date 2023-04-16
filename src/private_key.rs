@@ -24,11 +24,44 @@ pub fn get_address_from_private_key(private_key: &String) -> Address {
 }
 
 // Prints out random bytes and associated address
-pub fn generate() {
+fn generate() {
 
 	let bytes = random_bytes();
 	let address = get_address_from_private_key(&bytes);
 
 	println!("sk {}", bytes);
 	println!("pk {:?}", address);
+}
+
+// Used for the -r argument
+pub fn parse_arg_and_generate(args: Vec<String>) {
+    if args.len() == 2 {
+        generate();
+        return;
+    }
+    // Generate args[2] ammount of sk's
+    // If cannot parse generate 1
+    let ammount: u32 = match args[2].parse() {
+        Ok(n) => n,
+        Err(_) => 1,
+    };
+    for _ in 0..ammount {
+        generate();
+        println!("");
+    }
+    return;
+}
+
+// Validates SKs provided in the args
+pub fn parse_arg_and_validate_sk(args: Vec<String>) {
+    // Iterate over the items in the vector
+    for (index, arg) in args.iter().enumerate().skip(2) {
+        match arg.len() {
+            64 => {
+                println!("sk {}", arg);
+                println!("pk {:?}\n", get_address_from_private_key(arg));
+            },
+            _ =>  println!("Invalid private key length at index {}", index),
+        }
+    }
 }
