@@ -15,6 +15,11 @@ use std::env;
 async fn main() {
     let args: Vec<String> = env::args().collect();
 
+    // If no arguments provided, print error
+    if args.len() == 1 {
+        print_help_message();
+        return;
+    }
     match args[1].as_str() {
         "-h" => print_help_message(),
         "-r" => parse_arg_and_generate(args),
